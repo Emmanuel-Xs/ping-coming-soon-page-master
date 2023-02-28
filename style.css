@@ -1,0 +1,178 @@
+@import url("https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;600;700&display=swap");
+:root {
+	--clr-primary-400: hsl(223, 87%, 63%);
+	--clr-primary-500: hsl(223, 87%, 53%);
+	--clr-secondary-red-400: hsl(354, 100%, 66%);
+	--clr-secondary-blue-200: #c2d3ff;
+	--clr-neutral-500: hsl(0, 0%, 59%);
+	--clr-neutral-900: hsl(209, 33%, 12%);
+
+	--fw-300: 300;
+	--fw-600: 600;
+	--fw-700: 700;
+	--ff-libre: "Libre Franklin", sans-serif;
+	--fsz-g: 0.83rem;
+	--fsz-t: 1.5rem;
+}
+*,
+*:where(::before, ::after) {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+img {
+	max-width: 100%;
+}
+a {
+	text-decoration: none;
+}
+body {
+	height: 100dvh;
+}
+main {
+	display: grid;
+	place-items: center;
+	place-content: center;
+	height: 100dvh;
+}
+.container {
+	--mb: 4.5em;
+	margin-top: var(--mb);
+	width: min(500px, 85%);
+	font-size: var(--fsz-g);
+	font-family: var(--ff-libre);
+	text-align: center;
+}
+
+.ping-header,
+.ping-main {
+	margin-bottom: var(--mb);
+}
+
+.ping-image {
+	width: 15%;
+}
+
+.desc {
+	margin-top: 2.3em;
+}
+
+.desc-title {
+	font-size: var(--fsz-t);
+	font-weight: var(--fw-300);
+	color: var(--clr-neutral-500);
+	margin-bottom: 0.4em;
+}
+
+.desc-title span {
+	color: var(--clr-neutral-900);
+	font-weight: var(--fw-700);
+}
+
+.desc p {
+	margin-bottom: 2em;
+	font-weight: var(--fw-300);
+}
+
+.desc-form {
+	display: grid;
+	margin-inline: auto;
+	gap: 0.8em;
+	width: 90%;
+}
+
+#ping-email,
+.submit-button {
+	outline: none;
+	padding: 0.9em;
+	border: 1.5px solid var(--clr-secondary-blue-200);
+	border-radius: 2em;
+	color: var(--clr-primary-400);
+}
+
+#ping-email::placeholder {
+	color: var(--clr-secondary-blue-200);
+}
+
+.submit-button {
+	background-color: var(--clr-primary-400);
+	color: #fff;
+	box-shadow: -2px 3px 10px hsla(223, 87%, 63%, 0.15);
+	cursor: pointer;
+}
+
+.submit-button:hover {
+	background: var(--clr-primary-500);
+}
+.social-media-icons {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.8em;
+	margin-bottom: 1.5em;
+}
+.ping-footer p {
+	color: var(--clr-neutral-500);
+	font-size: 12px;
+}
+.fa-brands {
+	font-size: 0.85rem;
+	padding: 0.5em;
+	border: 1.5px solid var(--clr-secondary-blue-200);
+	color: var(--clr-primary-400);
+	border-radius: 2rem;
+	transition: hover ease 300ms;
+}
+.fa-brands:hover {
+	background-color: var(--clr-primary-400);
+	color: #fff;
+}
+/* fixes the weird issue that don't makes the border around the icons equal not perfect though */
+.fa-facebook-f {
+	padding-inline: 0.7em;
+}
+
+.error {
+	display: none;
+	margin-bottom: 1em;
+	font-size: 12.1px;
+	font-style: italic;
+	color: var(--clr-secondary-red-400);
+	transition: display ease-in-out 300ms;
+}
+/* media query for desktop version */
+
+@media (min-width: 480px) {
+	:root {
+		--fsz-t: 2rem;
+		--fsz-g: 0.85rem;
+		--mb: 4em;
+	}
+	.desc-form {
+		grid-template-columns: 2fr 1fr;
+		grid-template-rows: 1fr 1fr;
+		grid-template-areas:
+			"email button"
+			"error error";
+		width: 100%;
+		margin-bottom: 1em;
+	}
+	.error {
+		padding: 0 2em;
+		margin: 0;
+		text-align: left;
+		grid-area: error;
+	}
+	.ping-header {
+		margin-bottom: 0;
+	}
+	.submit-button {
+		grid-area: button;
+	}
+	#ping-email {
+		grid-area: email;
+	}
+	.fa-brands {
+		font-size: 0.8rem;
+	}
+}
